@@ -100,46 +100,6 @@ d3.csv("WhatsgoodlyData-6.csv").then(function(data) {
       });
       // .attr("stroke", "white");
 
-      // Add a text label to each circle
-      var labels = packGroup.selectAll("text")
-      .data(hierarchy.descendants().filter(d => d.depth <= 2))
-      .enter()
-      .append("text")
-      .text(d => d.data.name)
-      .attr("x", d => d.x)
-      .attr("y", d => {
-        if (d.depth === 2) {
-          return d.y;
-        } else {
-          return d.y + d.r;
-        }
-      })
-      .attr("text-anchor", "middle")
-      .attr("alignment-baseline", "middle")
-      .attr("fill", d => {
-        if (d.depth === 0) {
-          return "white";
-        } else {
-          return "black";
-        }
-      })
-      .attr("font-size", d => d.r / 4);
-//       .each(function(d) {
-//       var label = d3.select(this);
-//       var labelLength = label.node().getComputedTextLength();
-//       var availableSpace = 2 * d.r - 5; // reduce the available space to make sure the label doesn't touch the edge of the circle
-//       if (labelLength > availableSpace) {
-//         var text = label.text();
-//         var sliceIndex = Math.floor(text.length * availableSpace / labelLength);
-//         label.text(text.slice(0, sliceIndex) + "...");
-//         var fontSize = d.r / 4;
-//         while (label.node().getComputedTextLength() > availableSpace && fontSize > 2) {
-//           fontSize--;
-//           label.style("font-size", fontSize + "px");
-//         }
-//       }
-//     }
-// );
       
 
     const pie = d3.pie()
@@ -185,7 +145,47 @@ d3.csv("WhatsgoodlyData-6.csv").then(function(data) {
         .attr("stroke", "white")
         .attr("stroke-width", 0.2)
         .style("opacity", 1)
-        
+    // Add a text label to each circle
+      var labels = packGroup.selectAll("text")
+      .data(hierarchy.descendants().filter(d => d.depth <= 2))
+      .enter()
+      .append("text")
+      .text(d => d.data.name)
+      .attr("x", d => d.x)
+      .attr("y", d => {
+        if (d.depth === 2) {
+          return d.y;
+        } else {
+          return d.y + d.r;
+        }
+      })
+      .attr("text-anchor", "middle")
+      .attr("alignment-baseline", "middle")
+      .attr("fill", d => {
+        if (d.depth === 0) {
+          return "white";
+        } else {
+          return "black";
+        }
+      })
+      .attr("font-size", d => d.r / 4);
+//       .each(function(d) {
+//       var label = d3.select(this);
+//       var labelLength = label.node().getComputedTextLength();
+//       var availableSpace = 2 * d.r - 5; // reduce the available space to make sure the label doesn't touch the edge of the circle
+//       if (labelLength > availableSpace) {
+//         var text = label.text();
+//         var sliceIndex = Math.floor(text.length * availableSpace / labelLength);
+//         label.text(text.slice(0, sliceIndex) + "...");
+//         var fontSize = d.r / 4;
+//         while (label.node().getComputedTextLength() > availableSpace && fontSize > 2) {
+//           fontSize--;
+//           label.style("font-size", fontSize + "px");
+//         }
+//       }
+//     }
+// );
+      
     // Create a legend group element
     var legendGroup = svg.append("g")
     .attr("transform", "translate(30, 30)");
