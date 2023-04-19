@@ -210,12 +210,21 @@ d3.csv("WhatsgoodlyData-6.csv").then(function(data) {
     .text(d => d)
     .attr("alignment-baseline", "middle");  
 
-    var count = svg.append("g")
-    .attr("transform", "translate(50, 550)")
-    .append("text")
-    .attr("font-size", "16px")
-    .attr("fill", "black")
-    .text("");
+    var countGroup = svg.append("g")
+    .attr("transform", "translate(50, 800)");
+  
+    countGroup.append("rect")
+      .attr("width", 530)
+      .attr("height", 30)
+      .attr("fill", "#F0F0F0")
+      .attr("rx", 10)
+      .attr("ry", 10)
+      .attr("transform", "translate(0, -20)");
+    
+    var count = countGroup.append("text")
+      .attr("font-size", "16px")
+      .attr("fill", "black")
+      .text("");
 
     packGroup.selectAll(".segment-description")
     .on("click", function(event,d) {
