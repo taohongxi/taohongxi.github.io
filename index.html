@@ -5,7 +5,7 @@
 	<script src="https://d3js.org/d3.v6.min.js"></script>
 </head>
 <body>
-	<h2>Research Question 1</h2>
+	<h2>Research Question 1: Analyze the effects of social media influence on shopping. Are there any detectable trends?</h2>
 	<div id="visualization"></div>
 	<p>The code processes data related to social influence shopping and groups it by Segment Type, Segment Description, and Answer using the d3.group() function. The resulting grouped data is then formatted into a nested data structure where each Segment Description is a child of a Segment Type, and each Answer is a child of a Segment Description. Within each Answer, the code calculates the maximum count and associated color based on a predefined color map, and constructs an array of objects containing the name and count for each Answer. The formatted data is then converted to a hierarchy using the d3.hierarchy() function, with the sum() method used to set the size of each node in the hierarchy. The resulting hierarchy is then used to create a circle packing diagram.</p>
 	<script src="research1.js"></script>
